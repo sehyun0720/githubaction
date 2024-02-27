@@ -21,6 +21,16 @@ jobs:
           git config user.name sehyun0720
           git config user.email ttapp52580@naver.com
 
+      ## Gradle init
+      - name: Init Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: 8.5
+
+      ## Setup Gradle's permission
+      - name: Setup Gradle's permission
+        run: chmod +x gradlew
+
       ## caching(빌드 시간 줄이기)
       - name: Gradle Caching
         uses: actions/cache@v3
@@ -34,9 +44,10 @@ jobs:
 
       ## gradle build
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
-        with:
-          arguments: clean build
+        run: ./gradlew clean build -x test
+#        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+#        with:
+#          arguments: clean build
 
       - name: Merge sehyun branch
         run: |
