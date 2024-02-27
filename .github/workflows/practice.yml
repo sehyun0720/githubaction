@@ -21,10 +21,6 @@ jobs:
           git config user.name sehyun0720
           git config user.email ttapp52580@naver.com
 
-      ## setup gradle
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3
-
       ## caching(빌드 시간 줄이기)
       - name: Gradle Caching
         uses: actions/cache@v3
@@ -38,7 +34,9 @@ jobs:
 
       ## gradle build
       - name: Build with Gradle
-        run: ./gradlew build
+        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        with:
+          arguments: clean build
 
       - name: Merge sehyun branch
         run: |
