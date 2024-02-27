@@ -15,7 +15,7 @@ public class ActionController {
 
     @GetMapping("/action2")
     public String getStringTest2() {
-        return "github action practice2";
+        return "github action practice222222222222222222222222222";
     }
 
     @GetMapping("/action3")
