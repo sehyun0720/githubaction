@@ -1,0 +1,51 @@
+name: Merge Sehyun To Develop
+
+on:
+  push:
+    branches:
+      - sehyun
+
+jobs:
+  merge:
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout develop branch
+        uses: action/checkout@v2
+        with:
+          ref: 'main'
+          fetch-depth: '0'
+
+      - name: Configure Git
+        run: |
+          git config user.name sehyun0720
+          git config user.email ttapp52580@naver.com
+
+      - name: Merge sehyun branch
+        run: |
+          git merge origin/sehyun --no-edit
+
+      - name: Push changes to develop branch
+        uses: ad-m/github-push-action@master
+        with:
+          branch: develop
+          github_token: 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
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: actions/setup-java@v3
+#        with:
+#          java-version: '11'
+#          distribution: 'temurin'
+#          architecture: x64
+#
+#      - name: Setup Gradle
+#        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+#
+#      - name: Build with Gradle
+#        run: ./gradlew -b ci.gradle package
+#
+#      - name: Upload build artifacts
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: Package
+#          path: build/libs
