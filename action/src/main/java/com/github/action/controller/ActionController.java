@@ -12,4 +12,14 @@ public class ActionController {
     public String getStringTest() {
         return "github action practice";
     }
+
+    @GetMapping("/action2")
+    public String getStringTest2() {
+        return "github action practice2";
+    }
+
+    @GetMapping("/action3")
+    public String getStringTest3() {
+        return "github action practice3";
+    }
 }
